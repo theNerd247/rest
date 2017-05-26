@@ -4,7 +4,6 @@
   , OverloadedStrings
   , ScopedTypeVariables
   #-}
-
 import Prelude hiding ((.))
 
 import Control.Category ((.))

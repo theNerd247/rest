@@ -1,5 +1,10 @@
+{-# LANGUAGE
+    CPP
+  , FlexibleContexts
+  #-}
+#if MIN_VERSION_base(4,9,0)
 {-# OPTIONS -Wno-redundant-constraints #-}
-{-# LANGUAGE FlexibleContexts #-}
+#endif
 module Rest.Driver.Happstack.Docs (apiDocsHandler) where
 
 import Control.Monad

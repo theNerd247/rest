@@ -1,7 +1,10 @@
-{-# LANGUAGE ScopedTypeVariables #-}
+{-# LANGUAGE
+    NoImplicitPrelude
+  , ScopedTypeVariables
+  #-}
 module Rest.Gen.JavaScript (mkJsApi) where
 
-import Prelude hiding ((.))
+import Prelude.Compat hiding ((.))
 
 import Control.Category ((.))
 import Data.Maybe

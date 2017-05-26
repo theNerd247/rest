@@ -1,9 +1,14 @@
-{-# OPTIONS -Wno-redundant-constraints #-}
 {-# LANGUAGE
-    OverloadedStrings
+    CPP
+  , NoImplicitPrelude
+  , OverloadedStrings
   , RankNTypes
   , ScopedTypeVariables
   #-}
+#if MIN_VERSION_base(4,9,0)
+{-# OPTIONS -Wno-redundant-constraints #-}
+#endif
+import Prelude.Compat
 
 import Control.Monad
 import Control.Monad.Except

@@ -29,3 +29,4 @@ library
     Code.Build.Ruby
   build-depends:
       base == 4.*
+    , base-compat >= 0.8 && < 0.10

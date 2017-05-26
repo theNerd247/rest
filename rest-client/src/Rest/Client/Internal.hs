@@ -1,6 +1,7 @@
 {-# LANGUAGE
     CPP
   , FlexibleInstances
+  , NoImplicitPrelude
   , OverloadedStrings
   , UndecidableInstances
   #-}
@@ -34,6 +35,8 @@ module Rest.Client.Internal
   , doReq
   ) where
 
+import Prelude.Compat
+
 import Control.Arrow
 import Control.Monad
 import Control.Monad.Cont
@@ -41,7 +44,7 @@ import Data.Aeson.Utils (FromJSON, ToJSON, eitherDecodeV, encode)
 #if !MIN_VERSION_http_client(0,5,0)
 import Data.Default (def)
 #endif
-import Data.List
+import Data.List (intercalate)
 import Data.String
 import Data.String.ToString
 import Network.HTTP.Conduit hiding (method, responseBody, responseHeaders)
@@ -111,8 +114,8 @@ doReq (ApiRequest m ur ps rhds bd) =
                 , host = CH.pack h
                 , port = prt
                 , path = CH.pack (p ++ "/" ++ ur)
-                , queryString = (renderQuery False . simpleQueryToQuery . Prelude.map (CH.pack *** CH.pack)) ps
-                , HTTP.requestHeaders = rhds ++ Prelude.map (fromString *** CH.pack) hds
+                , queryString = (renderQuery False . simpleQueryToQuery . fmap (CH.pack *** CH.pack)) ps
+                , HTTP.requestHeaders = rhds ++ fmap (fromString *** CH.pack) hds
                 , HTTP.requestBody = RequestBodyLBS bd
 #if !MIN_VERSION_http_client(0,5,0)
                 , checkStatus = \_ _ _ -> Nothing

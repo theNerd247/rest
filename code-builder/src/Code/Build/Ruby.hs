@@ -1,7 +1,10 @@
+{-# LANGUAGE NoImplicitPrelude #-}
 module Code.Build.Ruby where
 
+import Prelude.Compat
+
 import Code.Build
-import Data.List
+import Data.List.Compat
 
 hashmap :: [(String, Code)] -> Code
 hashmap [] = code "{}"

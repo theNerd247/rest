@@ -1,7 +1,10 @@
+{-# LANGUAGE NoImplicitPrelude #-}
 module Code.Build.Haskell where
 
+import Prelude.Compat
+
 import Code.Build
-import Data.List
+import Data.List.Compat
 
 record :: [(String, Code)] -> Code
 record []    = code "{}"

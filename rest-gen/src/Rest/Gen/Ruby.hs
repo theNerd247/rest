@@ -1,15 +1,18 @@
-{-# LANGUAGE ScopedTypeVariables #-}
+{-# LANGUAGE
+    NoImplicitPrelude
+  , ScopedTypeVariables
+  #-}
 module Rest.Gen.Ruby (mkRbApi) where
 
-import Prelude hiding ((.))
+import Prelude.Compat hiding ((.))
 
 import Control.Category ((.))
 import Data.Char
-import Data.List
+import Data.List.Compat
 import Data.List.Split (splitOn)
 import Data.Maybe
-import qualified Data.Label.Total             as L
-import qualified Data.List.NonEmpty           as NList
+import qualified Data.Label.Total   as L
+import qualified Data.List.NonEmpty as NList
 
 import Code.Build
 import Code.Build.Ruby

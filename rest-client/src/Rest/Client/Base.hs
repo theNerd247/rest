@@ -1,8 +1,3 @@
-{-# OPTIONS
-  -Wno-redundant-constraints
-  -fno-warn-deprecations
-  -fno-warn-orphans
-  #-}
 {-# LANGUAGE
     CPP
   , DeriveFunctor
@@ -10,9 +5,17 @@
   , FlexibleInstances
   , GeneralizedNewtypeDeriving
   , MultiParamTypeClasses
+  , NoImplicitPrelude
   , TypeFamilies
   , UndecidableInstances
   #-}
+{-# OPTIONS
+  -fno-warn-deprecations
+  -fno-warn-orphans
+  #-}
+#if MIN_VERSION_base(4,9,0)
+{-# OPTIONS -Wno-redundant-constraints #-}
+#endif
 
 module Rest.Client.Base
   ( ApiInfo(..)
@@ -27,9 +30,7 @@ module Rest.Client.Base
   , responseToMaybe
   ) where
 
-#if !MIN_VERSION_base(4,6,0)
-import Prelude hiding (catch)
-#endif
+import Prelude.Compat
 
 import Control.Monad.Base
 import Control.Monad.Catch (MonadCatch (catch))

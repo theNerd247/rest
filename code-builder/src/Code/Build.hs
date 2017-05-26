@@ -1,6 +1,7 @@
 {-# LANGUAGE
     CPP
   , FlexibleInstances
+  , NoImplicitPrelude
   , TypeSynonymInstances
   , UndecidableInstances
   #-}
@@ -9,7 +10,8 @@
 #endif
 module Code.Build where
 
-import Data.List
+import Prelude.Compat
+import Data.List.Compat
 
 -- | Representation of code, each string represents a line
 newtype Code = Code { unCode :: [String] }
