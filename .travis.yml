@@ -68,6 +68,7 @@ script:
  - if [ "x$TEST" = "x--enable-tests" ]; then cabal new-test -w ${HC} ${TEST} all; fi
  - EXAMPLE_GEN=./dist-newstyle/build/*/*/rest-example-*/c/rest-example-gen/build/rest-example-gen/rest-example-gen
  - $EXAMPLE_GEN --haskell --target=./rest-example/client
+ - find .
  - cabal new-build rest-example/client --reorder-goals
  - rm -f rest-example/api.js
  - $EXAMPLE_GEN --javascript --target=./rest-example/api.js
