@@ -1,5 +1,10 @@
-{-# OPTIONS -Wno-redundant-constraints #-}
-{-# LANGUAGE GeneralizedNewtypeDeriving #-}
+{-# LANGUAGE
+    CPP
+  , GeneralizedNewtypeDeriving
+  #-}
+#if MIN_VERSION_base(4,9,0)
+{-# OPITONS -Wno-redundant-constraints #-}
+#endif
 module Rest.Driver.RestM
   ( RestM
   , runRestM
