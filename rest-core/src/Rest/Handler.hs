@@ -9,7 +9,7 @@
   , TypeFamilies
   #-}
 #if MIN_VERSION_base(4,9,0)
-{-# OPITONS -Wno-redundant-constraints #-}
+{-# OPTIONS_GHC -Wno-redundant-constraints #-}
 #endif
 -- | Handlers for endpoints in a 'Resource'.
 module Rest.Handler

@@ -5,7 +5,7 @@
   , NoImplicitPrelude
   #-}
 #if MIN_VERSION_base(4,9,0)
-{-# OPITONS -Wno-redundant-constraints #-}
+{-# OPTIONS_GHC -Wno-redundant-constraints #-}
 #endif
 -- | This module allows you to combine 'Resource's into an 'Api'. This
 -- can then be served using 'rest-happstack' or 'rest-snap', or used

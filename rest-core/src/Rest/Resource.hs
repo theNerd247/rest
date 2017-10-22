@@ -11,7 +11,7 @@
   , TypeSynonymInstances
   #-}
 #if MIN_VERSION_base(4,9,0)
-{-# OPITONS -Wno-redundant-constraints #-}
+{-# OPTIONS_GHC -Wno-redundant-constraints #-}
 #endif
 -- | A 'Resource' type for representing a REST resource, as well as
 -- smart constructors for empty resources which can then be filled in

@@ -4,7 +4,7 @@
   , RankNTypes
   #-}
 #if MIN_VERSION_base(4,9,0)
-{-# OPITONS -Wno-redundant-constraints #-}
+{-# OPTIONS_GHC -Wno-redundant-constraints #-}
 #endif
 module Rest.Driver.Happstack
   ( apiToHandler
