@@ -13,10 +13,10 @@ addons:
 # The different configurations we want to test. You could also do things like
 # change flags or use --stack-yaml to point to a different file.
 env:
-- ARGS="--resolver lts-4 --package haskell-src-exts-1.19.1"
-- ARGS="--resolver lts-5 --package haskell-src-exts-1.19.1"
-- ARGS="--resolver lts-6 --package haskell-src-exts-1.19.1"
-- ARGS="--resolver lts-7 --package haskell-src-exts-1.19.1"
+- ARGS="--resolver lts-4"
+- ARGS="--resolver lts-5"
+- ARGS="--resolver lts-6"
+- ARGS="--resolver lts-7"
 - ARGS="--resolver lts-8"
 - ARGS="--resolver lts-9"
 - ARGS="--resolver nightly"
@@ -32,7 +32,7 @@ before_install:
 # executables, and test suites, and runs the test suites. --no-terminal works
 # around some quirks in Travis's terminal implementation.
 script:
-- stack $ARGS --no-terminal --install-ghc install --test --haddock
+- stack $ARGS --no-terminal --install-ghc install --test --haddock . haskell-src-exts-1.19.1
 - stack $ARGS --no-terminal exec -- rest-example-gen --haskell --target=./rest-example/client
 - stack $ARGS --no-terminal build restexample-client
 - rm -f rest-example/api.js
