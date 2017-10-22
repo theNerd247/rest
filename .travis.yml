@@ -34,7 +34,7 @@ before_install:
 script:
 - stack $ARGS --no-terminal --install-ghc install --test --haddock . haskell-src-exts-1.19.1
 - stack $ARGS --no-terminal exec -- rest-example-gen --haskell --target=./rest-example/client
-- stack $ARGS --no-terminal build restexample-client
+- stack $ARGS --no-terminal build restexample-client haskell-src-exts-1.19.1
 - rm -f rest-example/api.js
 - stack $ARGS --no-terminal exec -- rest-example-gen --javascript --target=./rest-example/api.js
 - node rest-example/api.js
