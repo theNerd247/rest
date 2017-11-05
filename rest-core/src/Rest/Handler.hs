@@ -21,6 +21,7 @@ module Rest.Handler
 
     -- * Listings.
   , mkListing
+  , mkCustomListing
   , mkOrderedListing
     -- ** Parameter parsers for listings.
   , Range (..)
@@ -117,6 +118,14 @@ mkListing
   -> (Range -> ExceptT (Reason e) m [o])
   -> ListHandler m
 mkListing d a = mkGenHandler (mkPar range . d) (a . param)
+
+mkCustomListing 
+  :: (Monad m, o ~ FromMaybe () o', e ~ FromMaybe Void e')
+  => Modifier h p 'Nothing o' e'
+  -> (Env h p () -> ExceptT (Reason e) m [o])
+  -> ListHandler m
+mkCustomListing d h = mkGenHandler d h
+
 
 -- | Dictionary for taking 'Range' parameters. Allows two query
 -- parameters, @offset@ and @count@. If not passed, the defaults are 0
