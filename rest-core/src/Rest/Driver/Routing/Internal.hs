@@ -300,16 +300,16 @@ guardMethod mtd = asks method >>= guard . (== mtd)
 
 mkListHandler :: Monad m => ListHandler m -> Maybe (Handler m)
 mkListHandler (GenHandler dict act sec) =
-  do newDict <- L.traverse outputs listO . addPar range $ dict
+  do newDict <- L.traverse outputs listO $ dict
      return $ GenHandler newDict (mkListAction act) sec
 
 mkListAction :: Monad m
             => (Env h p i -> ExceptT (Reason e) m [a])
-            -> Env h (Range, p) i
+            -> Env h p i
             -> ExceptT (Reason e) m (List a)
-mkListAction act (Env h (Range f c, p) i) = do
+mkListAction act (Env h p i) = do
   xs <- act (Env h p i)
-  return (List f (min c (length xs)) (take c xs))
+  return $ List 0 (length xs) xs
 
 mkMultiHandler :: Monad m => Rest.Id id -> (id -> Run s m) -> Handler s -> Maybe (Handler m)
 mkMultiHandler sBy run (GenHandler dict act sec) = GenHandler <$> mNewDict <*> pure newAct <*> pure sec
